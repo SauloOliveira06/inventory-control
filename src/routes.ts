@@ -7,6 +7,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { RemoveUserController } from "./controllers/user/RemoveUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { EditCategoryController } from "./controllers/category/EditCategoryController";
+import { ReadCategoryController } from "./controllers/category/ReadCategoryController";
 
 const router = Router();
 
@@ -23,6 +24,11 @@ router.post(
   isAuthenticated,
   new CreateCategoryController().handle
 );
-router.put("/category/edit", isAuthenticated, new EditCategoryController().handle);
+router.put(
+  "/category/edit",
+  isAuthenticated,
+  new EditCategoryController().handle
+);
+router.get("/categories", isAuthenticated, new ReadCategoryController().handle);
 
 export { router };
