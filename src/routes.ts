@@ -8,6 +8,7 @@ import { RemoveUserController } from "./controllers/user/RemoveUserController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { EditCategoryController } from "./controllers/category/EditCategoryController";
 import { ReadCategoryController } from "./controllers/category/ReadCategoryController";
+import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
 
 const router = Router();
 
@@ -30,5 +31,10 @@ router.put(
   new EditCategoryController().handle
 );
 router.get("/categories", isAuthenticated, new ReadCategoryController().handle);
+router.delete(
+  "/category/remove",
+  isAuthenticated,
+  new RemoveCategoryController().handle
+);
 
 export { router };
