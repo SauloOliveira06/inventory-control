@@ -37,7 +37,7 @@ model Category {
 model Product {
   id          String    @id @default(uuid())
   name        String
-  price       String
+  price       Float
   description String
   banner      String
   amount      Int
@@ -47,7 +47,6 @@ model Product {
   category_id String
   @@map("products")
   item Item[]
-  
 }
 
 model Item {

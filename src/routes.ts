@@ -11,6 +11,7 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { EditCategoryController } from "./controllers/category/EditCategoryController";
 import { ReadCategoryController } from "./controllers/category/ReadCategoryController";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController";
+import { CreateProductController } from "./controllers/product/CreateProductController";
 
 const router = Router();
 
@@ -39,6 +40,14 @@ router.delete(
   "/category/remove",
   isAuthenticated,
   new RemoveCategoryController().handle
+);
+
+// product
+router.post(
+  "/product",
+  isAuthenticated,
+  upload.single("file"),
+  new CreateProductController().handle
 );
 
 export { router };
